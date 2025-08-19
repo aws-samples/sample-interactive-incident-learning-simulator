@@ -1,0 +1,45 @@
+"""
+type Component
+  component: 小文字で albsg, ec2, ec2sg, rdssg, s3, cloudtrail
+  state:  normal, incident
+
+type GameState
+  state: ongoing, ready, resetting
+"""
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+input ComponentInput {
+  component: String
+  state: String
+}
+
+input GameStateInput {
+  state: String
+}
+
+type Component {
+  component: String
+  state: String
+}
+
+type GameState {
+  state: String
+}
+
+type Query {
+  queryCompnent(input: String): Component
+}
+
+type Mutation {
+  updatedCompnent(input: ComponentInput!): Component
+  updatedGameState(input: GameStateInput!): GameState
+}
+
+type Subscription {
+  updatedCompnentSub: Component @aws_subscribe(mutations: ["updatedCompnent"])
+  updatedGameStateSub: GameState @aws_subscribe(mutations: ["updatedGameState"])
+}

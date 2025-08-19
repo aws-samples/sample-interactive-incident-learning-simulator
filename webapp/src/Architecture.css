@@ -1,0 +1,234 @@
+.architecture-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+}
+
+.architecture-container h3 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 2px solid #2196f3;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.architecture-diagram {
+  position: relative;
+  height: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* AWS Icons - 全てのアイコンサイズを統一 */
+.aws-icon {
+  width: 60px;
+  height: 60px;
+  margin: 5px 0;
+  object-fit: contain;
+  border: 4px solid #2ea745;
+  padding: 2px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* ALB Component */
+.alb-component {
+  position: relative;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  padding-top: 25px;
+  border: 4px solid #2ea745;
+  border-radius: 0;
+  background-color: transparent;
+  margin-top: 10px;
+  height: 250px;
+}
+
+/* EC2 Container */
+.ec2-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px;
+  position: relative;
+  padding: 15px;
+  padding-top: 25px;
+  border: 4px solid #2ea745;
+  border-radius: 0;
+  background-color: transparent;
+  margin-top: 10px;
+  height: 250px;
+}
+
+.ec2-instance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+/* RDS Component */
+.rds-component {
+  position: relative;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  padding-top: 25px;
+  border: 4px solid #2ea745;
+  border-radius: 0;
+  background-color: transparent;
+  margin-top: 10px;
+  height: 250px;
+}
+
+/* Security Group Label */
+.sg-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 5px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  white-space: normal;
+  text-align: center;
+  width: 100px;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+/* RDS Label */
+.rds-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 5px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  white-space: normal;
+  text-align: center;
+  width: 100px;
+  line-height: 1.2;
+  z-index: 1;
+}
+
+/* CloudTrail and S3 Section */
+.monitoring-storage-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 60px;
+  position: relative;
+  height: calc(100% - 35px);
+  margin-top: 10px;
+}
+
+.monitoring-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.storage-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin-top: -10px;
+}
+
+/* Component Labels */
+.component-label {
+  font-weight: bold;
+  margin-bottom: 3px;
+  font-size: 28px;
+}
+
+/* Security Group Incident State */
+.sg-incident {
+  border-color: #ff0000;
+  animation: border-blink 0.3s infinite;
+  border-width: 6px;
+}
+
+/* EC2 Incident State */
+.ec2-incident {
+  border-color: #ff0000;
+  animation: border-blink 0.3s infinite;
+  border-width: 6px;
+}
+
+/* 点滅アニメーションの定義 */
+@keyframes border-blink {
+  0% {
+    border-color: #ff0000;
+    border-width: 6px;
+  }
+  50% {
+    border-color: #ffff00;
+    border-width: 4px;
+  }
+  100% {
+    border-color: #ff0000;
+    border-width: 6px;
+  }
+}
+
+/* State Control Button */
+.state-control {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.state-toggle-button {
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.state-toggle-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* サブスクリプションステータス表示 */
+.subscription-status {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #2ea745;
+  font-weight: bold;
+}

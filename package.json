@@ -1,0 +1,25 @@
+{
+  "name": "sample-interactive-incident-learning-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "cdk",
+    "cdk/lambda/*",
+    "webapp"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "cdk:deploy": "npm run cdk deploy --workspace=cdk",
+    "cdk:synth": "npm run cdk synth --workspace=cdk",
+    "cdk:destroy": "npm run cdk destroy --workspace=cdk",
+    "webapp:dev": "npm run dev --workspace=webapp",
+    "webapp:build": "npm run build --workspace=webapp"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@reactour/tour": "^3.8.0"
+  }
+}

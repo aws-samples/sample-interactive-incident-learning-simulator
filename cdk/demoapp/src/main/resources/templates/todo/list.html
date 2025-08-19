@@ -1,0 +1,128 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Incident Learning Simulator - MemoApp</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <div class="header-section">
+        <h1 class="app-title">Interactive Incident Learning Simulator - Memo App</h1>
+        <p class="app-subtitle">
+          メモアプリケーション - 障害対応トレーニング環境
+        </p>
+      </div>
+
+      <!-- Action Button -->
+      <div class="mb-4 text-center">
+        <a th:href="@{/todos/new}" class="btn btn-primary">
+          <i class="fas fa-plus me-2"></i>新しいメモを作成
+        </a>
+      </div>
+
+      <!-- Todo Table -->
+      <div class="table-responsive">
+        <table class="table" th:if="${!#lists.isEmpty(todos)}">
+          <thead>
+            <tr>
+              <th style="width: 60px"><i class="fas fa-check"></i></th>
+              <th><i class="fas fa-sticky-note me-2"></i>メモ内容</th>
+              <th style="width: 150px">
+                <i class="fas fa-calendar-plus me-2"></i>作成日時
+              </th>
+              <th style="width: 150px">
+                <i class="fas fa-calendar-edit me-2"></i>更新日時
+              </th>
+              <th style="width: 150px"><i class="fas fa-cogs me-2"></i>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="todo : ${todos}">
+              <td class="text-center">
+                <form
+                  th:action="@{/todos/{id}/toggle(id=${todo.id})}"
+                  method="post"
+                  style="margin: 0"
+                >
+                  <input
+                    type="checkbox"
+                    th:checked="${todo.completed}"
+                    onchange="this.form.submit()"
+                    class="form-check-input"
+                    style="transform: scale(1.2)"
+                  />
+                </form>
+              </td>
+              <td>
+                <span
+                  th:text="${todo.title}"
+                  th:class="${todo.completed ? 'completed' : ''}"
+                  style="font-weight: 500"
+                ></span>
+              </td>
+              <td>
+                <small class="text-muted">
+                  <i class="fas fa-clock me-1"></i>
+                  <span
+                    th:text="${#temporals.format(todo.createdAt, 'MM/dd HH:mm')}"
+                  ></span>
+                </small>
+              </td>
+              <td>
+                <small class="text-muted">
+                  <i class="fas fa-edit me-1"></i>
+                  <span
+                    th:text="${#temporals.format(todo.updatedAt, 'MM/dd HH:mm')}"
+                  ></span>
+                </small>
+              </td>
+              <td class="todo-actions">
+                <a
+                  th:href="@{/todos/{id}/edit(id=${todo.id})}"
+                  class="btn btn-sm btn-outline-primary me-1"
+                >
+                  <i class="fas fa-edit"></i>
+                </a>
+                <form
+                  th:action="@{/todos/{id}/delete(id=${todo.id})}"
+                  method="post"
+                  style="display: inline"
+                >
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-outline-danger"
+                    onclick="return confirm('本当に削除しますか？')"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" th:if="${#lists.isEmpty(todos)}">
+        <i class="fas fa-sticky-note"></i>
+        <h3>メモがありません</h3>
+        <p>新しいメモを作成して始めましょう！</p>
+        <a th:href="@{/todos/new}" class="btn btn-primary">
+          <i class="fas fa-plus me-2"></i>最初のメモを作成
+        </a>
+      </div>
+    </div>
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "resilience-scenarios",
+  "description": "Lambda functions for resilience scenarios",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.485.0",
+    "@aws-sdk/lib-dynamodb": "^3.485.0",
+    "@aws-sdk/client-ec2": "^3.485.0",
+    "@aws-sdk/client-ssm": "^3.485.0"
+  },
+  "private": true
+}

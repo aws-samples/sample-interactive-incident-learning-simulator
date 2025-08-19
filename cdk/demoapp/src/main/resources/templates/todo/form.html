@@ -1,0 +1,98 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Incident Learning Simulator - MemoApp</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <div class="header-section">
+        <h1 class="app-title">Interactive Incident Learning Simulator - Memo App</h1>
+        <p
+          class="app-subtitle"
+          th:text="${todo.id == null ? 'メモを作成' : 'メモを編集'}"
+        >
+          メモを作成
+        </p>
+      </div>
+
+      <!-- Form Section -->
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form
+            th:action="${todo.id == null ? '/todos' : '/todos/' + todo.id}"
+            method="post"
+          >
+            <div class="mb-4">
+              <label for="title" class="form-label">
+                <i class="fas fa-sticky-note me-2"></i>メモ内容
+              </label>
+              <textarea
+                class="form-control"
+                id="title"
+                name="title"
+                rows="4"
+                th:text="${todo.title}"
+                required
+                placeholder="ここにメモの内容を入力してください..."
+              ></textarea>
+              <div class="form-text">
+                <i class="fas fa-info-circle me-1"></i>
+                メモの内容を詳しく記入してください
+              </div>
+            </div>
+
+            <div class="mb-4" th:if="${todo.id != null}">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="completed"
+                  name="completed"
+                  th:checked="${todo.completed}"
+                />
+                <label class="form-check-label" for="completed">
+                  <i class="fas fa-check-circle me-2"></i>完了済み
+                </label>
+              </div>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <button type="submit" class="btn btn-primary me-md-2">
+                <i class="fas fa-save me-2"></i>
+                <span th:text="${todo.id == null ? '作成' : '更新'}">作成</span>
+              </button>
+              <a th:href="@{/todos}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>戻る
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+          <div class="alert alert-info" role="alert">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>ヒント:</strong>
+            このメモアプリは障害対応トレーニング環境の一部です。
+            システムの動作を確認しながら操作してください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+  </body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "pass-incident",
+  "main": "index.js",
+  "dependencies": {
+    "aws-amplify": "^6.14.4"
+  },
+  "private": true
+}
