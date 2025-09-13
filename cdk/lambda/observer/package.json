@@ -3,7 +3,7 @@
   "main": "index.js",
   "dependencies": {
     "aws-lambda": "^1.0.7",
-    "axios": "^1.10.0"
+    "axios": "^1.12.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.149"

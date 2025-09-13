@@ -22,7 +22,7 @@
     "@types/aws-lambda": "^8.10.149",
     "@types/lodash": "^4.17.16",
     "aws-cdk-lib": "2.196.0",
-    "axios": "^1.10.0",
+    "axios": "^1.12.0",
     "cdk-nag": "^2.36.12",
     "constructs": "^10.0.0",
     "deploy-time-build": "^0.3.32",
